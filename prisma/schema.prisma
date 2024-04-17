@@ -17,3 +17,14 @@ model my_favorite_subject {
   image       String?
   description String?
 }
+
+model markers {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name       String   @db.VarChar(255)
+  latitude       Int
+  longitude      Int
+  description String?
+}
+

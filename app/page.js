@@ -7,7 +7,7 @@ export default function Home() {
     <>
     <a className="p-2" href="/api/auth/logout">Logout</a>
     <Weather/>
-    <RadarMap/>
+   <RadarMap/>
     </>
   );
 }

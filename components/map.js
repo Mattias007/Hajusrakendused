@@ -1,14 +1,21 @@
 "use client"
 import React from 'react';
 import Radar from 'radar-sdk-js';
-
 import 'radar-sdk-js/dist/radar.css';
+import { getAllMarkers } from '@/app/actions';
+
+
+
 
 
 
 
 class RadarMap extends React.Component {
+  
+
     componentDidMount() {
+
+
         Radar.initialize('prj_live_pk_80d4b2690b810855f2e3b400883c0760f0066577');
         
         // create a map
@@ -20,18 +27,13 @@ class RadarMap extends React.Component {
         });
         
         // add a marker to the map
-    Radar.ui.marker({ text: 'Radar HQ' })
-      .setLngLat([22.488, 58.254])
-      .addTo(map);
-
       map.on('click', (e) => {
+        console.log(e)
         Radar.ui.marker({ text: 'Clicked Location' })
           .setLngLat(e.lngLat)
           .addTo(map);
       });
-      
     }
-
     render() {
 
         return (
