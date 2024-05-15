@@ -1,3 +1,4 @@
+import Image from 'next/image'
 
 async function getWeather() {
     "use server"
@@ -17,14 +18,17 @@ async function getWeather() {
     const data = await getWeather()
     const weather = data.weather[0]
     const main = data.main
-
     return (
-        <>
-            <h1>Current weather</h1>
+        <div className="p-2 shadow-lg w-fit rounded m-2">
+            <h1>Current weather:</h1>
             <h1>Status: {weather.main}</h1>
+            <Image src={"/weather" + weather.icon + ".png"}
+                  width={100}
+                  height={100}>
+            </Image>
             <h1>Description: {weather.description}</h1>
             <h1>Temp: {main.temp}°C</h1>
             <h1>Hum: {main.humidity}%</h1>
-        </>
+        </div>
     )
   }

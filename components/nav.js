@@ -4,6 +4,7 @@ export default async function Header() {
         <nav className='w-screen h-7 bg-gray-50 flex justify-around'>
             <Link href="/">Weather/Map</Link>
             <Link href="/store">Store Cart</Link>
+            <Link href="/blog">Blog</Link>
         </nav>
     )
   }

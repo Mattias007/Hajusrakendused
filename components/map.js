@@ -11,7 +11,12 @@ import { getAllMarkers } from '@/app/actions';
 
 
 class RadarMap extends React.Component {
-  
+  state = {
+    lng: 22.488,
+    lat:58.254
+  };
+
+
 
     componentDidMount() {
 
@@ -27,17 +32,28 @@ class RadarMap extends React.Component {
         });
         
         // add a marker to the map
-      map.on('click', (e) => {
-        console.log(e)
-        Radar.ui.marker({ text: 'Clicked Location' })
+      map.on('click', (e) => {        
+        this.setState({
+          lng: e.lngLat.lng,
+          lat: e.lngLat.lat
+
+        })
+
+        
+        Radar.ui.marker({ text: "hello"})
           .setLngLat(e.lngLat)
-          .addTo(map);
+          .addto(map);
       });
+
+      console.log(Radar.ui.marker)
     }
     render() {
 
         return (
         <>
+        {this.state.lng}
+        <div></div>
+        {this.state.lat}
       <div id="map-container" style={{ height: "500px", position: 'absolute', width: '100%' }}>
         <div id="map" style={{ height: '100%', position: 'absolute', width: '100%' }}/>
       </div>
