@@ -20,12 +20,14 @@ async function getWeather() {
     const main = data.main
     return (
         <div className="p-2 shadow-lg w-fit rounded m-2">
+            <h1 className='text-center text-lg'>Kuressaare</h1>
             <h1>Current weather:</h1>
-            <h1>Status: {weather.main}</h1>
-            <Image src={"/weather" + weather.icon + ".png"}
+            <Image src={"/weather/" + weather.icon + ".png"}
                   width={100}
-                  height={100}>
+                  height={100}
+                  alt="">
             </Image>
+            <h1>Status: {weather.main}</h1>
             <h1>Description: {weather.description}</h1>
             <h1>Temp: {main.temp}°C</h1>
             <h1>Hum: {main.humidity}%</h1>
