@@ -1,3 +1,4 @@
+"use server"
 
 
 const { PrismaClient } = require('@prisma/client')
@@ -5,7 +6,6 @@ const prisma = new PrismaClient()
 
 
 export async function getAllPosts() {
-    "use server"
 
     let data = await prisma.blogposts.findMany({
       include: {
@@ -18,7 +18,6 @@ export async function getAllPosts() {
 
 
 export async function addPost(formData) {
-    "use server"
 
     const data = await prisma.blogposts.create({
       data: {
@@ -30,7 +29,6 @@ export async function addPost(formData) {
 } 
 
 export async function deletePost(formData) {
-    "use server"
 
     const data = await prisma.blogposts.delete({
         where: {
@@ -41,7 +39,6 @@ export async function deletePost(formData) {
   }  
 
 export async function updatedPost(formData) {
-  "use server"
 
     const data = await prisma.blogposts.update({
       where: {
@@ -56,7 +53,6 @@ export async function updatedPost(formData) {
   }
 
 export async function addComment(formData) {
-  "use server"
 
     const data = await prisma.blogcomments.create({
       data: {
@@ -72,7 +68,6 @@ export async function addComment(formData) {
   
 
 export async function getPostComments(id) {
-  "use server"
 
     const data = await prisma.blogcomments.findMany({
       data: {
@@ -87,7 +82,6 @@ export async function getPostComments(id) {
   }
   
 export async function deleteComments(formData) {
-    "use server"
     const data = await prisma.blogcomments.delete({
         where: {
             id: parseInt(formData.get('id')),

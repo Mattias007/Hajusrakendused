@@ -4,7 +4,6 @@ const prisma = new PrismaClient()
 
 
 export async function getAllItems() {
-  "use server"
 
     let data = await prisma.storeitems.findMany()
 
@@ -18,7 +17,6 @@ export async function getAllItems() {
   }
 
 export async function addStoreItme(formData) {
-    "use server"
   
       const data = await prisma.storeitems.create({
         data: {
@@ -33,8 +31,7 @@ export async function addStoreItme(formData) {
     }
 
     export async function checkout(formData) {
-      "use server"
 
-        return t  
+        return "t"
       }
       

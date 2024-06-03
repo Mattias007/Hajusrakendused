@@ -1,6 +1,5 @@
 "use server"
 export async function formhandle(formData){
-    "use server"
     const apiroute = formData.get("api")
     console.log(apiroute)
     if (apiroute == "https://hajus.ta19heinsoo.itmajakas.ee/api/movies"){
