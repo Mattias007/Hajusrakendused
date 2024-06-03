@@ -1,7 +1,10 @@
+import App from '@/components/App'
+import { StoreProvider } from '@/redux/StoreProvider'
+
 export default function StoreLayout({ children }) {
     return (
-          <section>
-            <div>{children}</div>
-          </section>
+      <StoreProvider >           
+              <App>{children}</App>    
+      </StoreProvider>
     )
   }

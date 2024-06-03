@@ -5,8 +5,10 @@ export default function Home() {
 
   return (
     <>
+    <div className="flex justify-around">
     <Weather/>
-   {/* <RadarMap/> */}
+    </div>
+    <RadarMap/>
     </>
   );
 }

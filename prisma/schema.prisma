@@ -13,18 +13,51 @@ model my_favorite_subject {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   title       String   @db.VarChar(255)
-  price       Int
   image       String?
   description String?
+  ip       String?
+  ipv6     String?
 }
 
 model markers {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  name       String   @db.VarChar(255)
-  latitude       Int
-  longitude      Int
+  name        String   @db.VarChar(255)
+  latitude    Decimal
+  longitude   Decimal
   description String?
 }
 
+model blogposts {
+  id           Int            @id @default(autoincrement())
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  name         String         @db.VarChar(255)
+  description  String?
+  blogcomments blogcomments[]
+}
+
+model blogcomments {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  blogpost_id Int
+  blogpost    blogposts @relation(fields: [blogpost_id], references: [id], onDelete: Cascade)
+  name        String    @db.VarChar(255)
+  description String?
+
+  @@index([blogpost_id])
+}
+
+
+model storeitems {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  price       Int     
+  countInStock       Int     
+  name        String   @db.VarChar(255)
+  image       String?
+  description String?
+}
