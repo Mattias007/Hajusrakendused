@@ -116,7 +116,7 @@ class RadarMap extends React.Component {
         <h1>Description: {element.description}</h1>
         <h1>Lon: {element.longitude}</h1>
         <h1>Lat: {element.latitude}</h1>
-        <form action={this.updatedMarker} className='py-2 w-full'>
+        <form action={this.handleUpdate} className='py-2 w-full'>
           <div className='flex gap-1 justify-between flex-shrink'>
           <input name='name' type='text' defaultValue={element.name} className='rounded shadow p-2 w-1/2'></input>
           <input name='description' type='text' defaultValue={element.description} className='rounded shadow p-2 w-1/2'></input>
