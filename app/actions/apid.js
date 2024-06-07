@@ -21,7 +21,7 @@ export async function formhandle(formData){
         const data = await fetch(apiroute + `?limit=${formData.get("limit")}`,{ cache: 'force-cache' })
         let json = await data.json()
 
-        json.forEach(element => {
+        json.data.forEach(element => {
             element.image = "https://hajusrakendused.tak21maasik.itmajakas.ee/pictures/" + element.image
         })
         return json
