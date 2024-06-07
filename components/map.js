@@ -50,7 +50,6 @@ class RadarMap extends React.Component {
   }
   async componentDidUpdate(){
     const data = await getAllMarkers();
-    console.log(this.markers)
     this.markers.map(e =>{
       e.remove()
     })
@@ -71,7 +70,6 @@ class RadarMap extends React.Component {
 
   handleAddmarker = async (e) => {
 
-    console.log(e)
     const formData = new FormData(e.target);
     const newMarker = {
       name: formData.get('name'),

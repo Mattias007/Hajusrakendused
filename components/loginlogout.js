@@ -9,14 +9,14 @@ export default function Loginlogout() {
         <nav>
           {user ? (
             <>
-              <Link href="/api/auth/logout">
+              <a href="/api/auth/logout">
                 Logout
-              </Link>
+              </a>
             </>
           ) : (
-            <Link href="/api/auth/login">
+            <a href="/api/auth/login">
               Login
-            </Link>
+            </a>
           )}
         </nav>
       );

@@ -11,7 +11,6 @@ import Image from "next/image";
 
         function handlesubmit(formData){
             formhandle(formData).then(res => {
-            console.log(Object.values(res)[0])
             setData(Object.values(res)[0])
         })
         }
