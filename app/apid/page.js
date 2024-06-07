@@ -23,7 +23,7 @@ import Image from "next/image";
         <select id="api" name="api">
         <option value="https://mannicoon.com/api/cats">Matlik Kassid</option>
         <option value="https://hajus.ta19heinsoo.itmajakas.ee/api/movies">Ralf</option>
-        <option value="http://localhost:3000/api">Mattias</option>
+        <option value="https://hajusrakendused.tak21maasik.itmajakas.ee/api/subjects">Mattias</option>
 
         </select> 
         <label htmlFor="limit">Querry Limit:</label>

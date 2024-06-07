@@ -15,7 +15,15 @@ export async function formhandle(formData){
         json.cats.forEach(element => {
             element.image = "https://mannicoon.com/storage/images/cats/" + element.image
         })
-        
+        return json
+    }
+    else if(apiroute == "https://hajusrakendused.tak21maasik.itmajakas.ee/api/subjects"){
+        const data = await fetch(apiroute + `?limit=${formData.get("limit")}`,{ cache: 'force-cache' })
+        let json = await data.json()
+
+        json.forEach(element => {
+            element.image = "https://hajusrakendused.tak21maasik.itmajakas.ee/pictures/" + element.image
+        })
         return json
     }
 }
