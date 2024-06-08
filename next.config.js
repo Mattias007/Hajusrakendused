@@ -30,6 +30,12 @@ const nextConfig = {
             port: '',
             pathname: '/dpqoomlhi/image/upload/**/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'hajusrakendused.tak21maasik.itmajakas.ee',
+            port: '',
+            pathname: '/pictures/**',
+          },
         ],
       },
 }
