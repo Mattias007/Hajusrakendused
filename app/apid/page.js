@@ -33,7 +33,7 @@ export default function Apid() {
                 {data && data.map(item => (
                     <div key={item.id} className="bg-green-200 rounded shadow flex flex-col justify-between">
                         {Object.keys(item).map(key =>(
-                            <div className="bg-white border border-green-400 p-2 m-1 rounded shadow">
+                            <div key={key} className="bg-white border border-green-400 p-2 m-1 rounded shadow">
                                 <h1>{key}: {item[key]}</h1>
                             </div>
                         ))}
