@@ -54,11 +54,11 @@ export default function AddToCart({
       )}
       <div>
         {product.countInStock > 0 ? (
-          <button className="primary-button w-full" onClick={addToCartHandler}>
+          <button className="primary-button w-full bg-green-200 p-2 rounded shadow hover:bg-green-400"  onClick={addToCartHandler}>
             Add to cart
           </button>
         ) : (
-          <button disabled>Out of stock</button>
+          <button disabled className='bg-red-400 p-2 rounded shadow'>Out of stock</button>
         )}
       </div>
     </>

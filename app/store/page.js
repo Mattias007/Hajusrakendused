@@ -6,7 +6,7 @@ export default async function Store(){
     const products = await getAllItems()
 
     return(
-        <>
+        <div className="">
         {/* <form action={addStoreItme} className='bg-gray-200 w-1/4 p-2 flex flex-col gap-2 m-2 shadow rounded'>
         <h1>Add Store Item</h1>
         <input name='name' type='text'></input>
@@ -21,8 +21,10 @@ export default async function Store(){
             <ProductItem key={product.id} product={product} />
         ))}
         </div>
-        <Link href="store/cart">Cart</Link>
+        <div className="mt-7">
+            <Link href="store/cart" className="bg-green-200 p-2 rounded shadow hover:bg-green-400">Store Cart</Link>
+        </div>
 
-        </>
+        </div>
     )
 }

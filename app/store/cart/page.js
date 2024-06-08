@@ -25,8 +25,8 @@ export default function CartPage() {
       {loading ? (
         <div>Loading...</div>
       ) : cartItems.length === 0 ? (
-        <div>
-          Cart is empty. <Link href="/store">Go shopping</Link>
+        <div className=''>
+          Cart is empty. <Link href="/store" className='bg-green-200 p-2 rounded shadow hover:bg-green-400'>Go shopping</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -44,7 +44,7 @@ export default function CartPage() {
                 {cartItems.map((item) => (
                   <tr key={item.id} className="border-b">
                     <td>
-                        <h1>{item.name}</h1>
+                      <h1>{item.name}</h1>
                     </td>
                     <td className="p-5 text-right">
                       <select
@@ -63,7 +63,7 @@ export default function CartPage() {
                     <td className="p-5 text-right">${item.price}</td>
                     <td className="p-5 text-center">
                       <button
-                        className="default-button"
+                        className="default-button bg-red-200 hover:bg-red-600 p-2 rounded shadow"
                         onClick={() => removeFromCartHandler(item.id)}
                       >
                         Delete
@@ -86,7 +86,7 @@ export default function CartPage() {
                 <li>
                   <button
                     onClick={() => router.push('/store/checkout')}
-                    className="primary-button w-full"
+                    className="primary-button w-full bg-green-200 p-2 rounded shadow hover:bg-green-400"
                   >
                     Proceed to checkout
                   </button>

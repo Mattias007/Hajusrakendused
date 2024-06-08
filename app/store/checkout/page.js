@@ -42,7 +42,7 @@ export default function PlaceOrderScreen() {
           <div className="overflow-x-auto md:col-span-3">
 
             <div className="card overflow-x-auto p-5">
-              <h2 className="mb-2 text-lg">Order Items</h2>
+              <h2 className="mb-2 text-lg">Order Items:</h2>
               <table className="min-w-full">
                 <thead className="border-b">
                   <tr>
@@ -68,14 +68,14 @@ export default function PlaceOrderScreen() {
                 </tbody>
               </table>
               <div>
-                <Link className="default-button inline-block" href="/store/cart">
-                  Edit
+                <Link className="default-button inline-block bg-green-200 p-2 mt-4 rounded shadow hover:bg-green-400" href="/store/cart">
+                  Edit Items
                 </Link>
               </div>
             </div>
           </div>
           <div>
-            <div className="card  p-5">
+            <div className="card  p-5 border border-green-200 rounded shadow">
               <h2 className="mb-2 text-lg">Order Summary</h2>
               <ul>
                 <li>
@@ -103,12 +103,12 @@ export default function PlaceOrderScreen() {
                   </div>
                 </li>
                 <li>
-                  <form action={removeCartHandler}>
-                    <input required name="name" placeholder='First Name'></input>
-                    <input required name="lastname" placeholder='Last Name'></input>
-                    <input required name="email" placeholder='Email'></input>
-                    <input required name='phone' placeholder='Phone Number'></input>
-                    <button className="primary-button w-full">
+                  <form action={removeCartHandler} className='flex gap-2 flex-col'>
+                    <input required name="name" placeholder='First Name' className='rounded border p-2 border-green-200'></input>
+                    <input required name="lastname" placeholder='Last Name' className='rounded border p-2 border-green-200'></input>
+                    <input required name="email" placeholder='Email'className='rounded border p-2 border-green-200'></input>
+                    <input required name='phone' placeholder='Phone Number' className='rounded border p-2 border-green-200'></input>
+                    <button className="primary-button w-full bg-green-200 p-2 rounded shadow hover:bg-green-400">
                       Place Order
                     </button>
                   </form>

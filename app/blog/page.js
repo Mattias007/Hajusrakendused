@@ -33,12 +33,12 @@ export default function Blog() {
             </div>
 
             
-            <form action={handeladdPost} className='bg-green-200 m-2 p-2 flex flex-col gap-2 shadow rounded'>
+            <form action={handeladdPost} className='bg-green-200 m-2 p-2 md:w-1/3 flex flex-col gap-2 shadow rounded'>
                 <h1>Add Blogpost</h1>
                 <label>Title:</label>
-                <input name='name' className='rounded p-2' type='text'></input>
+                <input name='name' className='rounded p-2' placeholder='Title' type='text'></input>
                 <label>Description:</label>
-                <input name='description' className='rounded p-2'  type='text'></input>
+                <textarea  name='description'  className='rounded p-2' placeholder='Description'  type='text'></textarea>
                 <button type='submit' className='bg-green-300 hover:bg-green-400 rounded p-2'>Submit</button>
             </form>
 
