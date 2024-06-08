@@ -6,7 +6,7 @@ export default function Loginlogout() {
     const { user, error, isLoading } = useUser();
 
     return (
-        <nav>
+        <div className='w-full text-center hover:bg-green-400'>
           {user ? (
             <>
               <a href="/api/auth/logout">
@@ -18,6 +18,6 @@ export default function Loginlogout() {
               Login
             </a>
           )}
-        </nav>
+        </div>
       );
   }

@@ -48,6 +48,8 @@ export async function updatedMarker(formData) {
     data: {
       name: formData.get('name'),
       description: formData.get('description'),
+      latitude: parseFloat(formData.get('latitude')),
+      longitude: parseFloat(formData.get('longitude'))
     }
   })
   return "succsess"

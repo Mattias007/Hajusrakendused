@@ -7,16 +7,16 @@ export default async function Store(){
 
     return(
         <>
-        <form action={addStoreItme} className='bg-gray-200 w-1/4 p-2 flex flex-col gap-2 shadow rounded'>
+        {/* <form action={addStoreItme} className='bg-gray-200 w-1/4 p-2 flex flex-col gap-2 m-2 shadow rounded'>
         <h1>Add Store Item</h1>
         <input name='name' type='text'></input>
         <input name='description'  type='text'></input>
         <input name='price'  type='number'></input>
         <input name='countInStock'  type='number'></input>
         <button type='submit'>Submit</button>
-        </form>
+        </form> */}
 
-        <div>
+        <div className="grid grid-cols-3 gap-2">
         {products.map((product) =>(
             <ProductItem key={product.id} product={product} />
         ))}

@@ -26,40 +26,41 @@ class RadarMap extends React.Component {
       center: [22.488, 58.254],
       zoom: 12,
     });
-    
+
     let mainmarker = new Radar.ui.marker({ text: 'Kurssaare' }).setLngLat([22.488, 58.254]).addTo(this.map);
 
     const data = await getAllMarkers();
     this.setState({ data });
 
-  
+
     this.markers = []
 
     // add a marker to the map
-    this.map.on('click', (e) => {  
-      if (this.markers) {
+    if (this.markers != undefined) {
+      this.map.on('click', (e) => {
         mainmarker.remove();
         mainmarker = Radar.ui.marker({ text: 'Cliked' }).setLngLat(e.lngLat).addTo(this.map);
         this.setState({
           lng: e.lngLat.lng,
           lat: e.lngLat.lat
         })
-      }  
-    });
+      }
+      )
+    };
 
   }
-  async componentDidUpdate(){
+  async componentDidUpdate() {
     const data = await getAllMarkers();
-    this.markers.map(e =>{
+    this.markers.map(e => {
       e.remove()
     })
 
     this.markers = data.map(element => (
       new Radar.ui.marker({ text: element.name })
-        .setLngLat([parseFloat(element.latitude), parseFloat(element.longitude)])
+        .setLngLat([parseFloat(element.longitude), parseFloat(element.latitude)])
         .addTo(this.map)
     ));
-    
+
   }
 
   componentWillUnmount() {
@@ -75,7 +76,7 @@ class RadarMap extends React.Component {
       name: formData.get('name'),
       description: formData.get('description'),
       latitude: this.state.lat,
-      longitude: this.state.lng,  
+      longitude: this.state.lng,
     };
     await addMarker(e);
     const updatedData = await getAllMarkers();
@@ -106,7 +107,7 @@ class RadarMap extends React.Component {
 
   }
 
-  
+
   renderMarkers() {
     return this.state.data.map((element, index) => (
       <div className='p-2 bg-green-200 rounded shadow' key={index}>
@@ -115,10 +116,12 @@ class RadarMap extends React.Component {
         <h1>Lon: {element.longitude}</h1>
         <h1>Lat: {element.latitude}</h1>
         <form action={this.handleUpdate} className='py-2 w-full'>
-          <div className='flex gap-1 justify-between flex-shrink'>
-          <input name='name' type='text' defaultValue={element.name} className='rounded shadow p-2 w-1/2'></input>
-          <input name='description' type='text' defaultValue={element.description} className='rounded shadow p-2 w-1/2'></input>
-          <button name="id" value={element.id} type="submit" className='bg-green-300 hover:bg-green-400 p-2 text-center rounded'>Edit</button>
+          <div className='flex flex-col gap-2'>
+            <input name='name' type='text' defaultValue={element.name} className='rounded shadow p-2'></input>
+            <input name='description' type='text' defaultValue={element.description} className='rounded shadow p-2'></input>
+            <input name='longitude' type='number' step="any" defaultValue={element.longitude} className='rounded shadow p-2'></input>
+            <input name='latitude' type='number' step="any" defaultValue={element.latitude} className='rounded shadow p-2'></input>
+            <button name="id" value={element.id} type="submit" className='bg-green-300 hover:bg-green-400 p-2 text-center rounded'>Edit</button>
           </div>
           <input name='index' value={index} readOnly className='hidden'></input>
         </form>
@@ -133,31 +136,36 @@ class RadarMap extends React.Component {
 
   render() {
 
-  return (
-    <>
-      <div className='h-[500px]'>
-        <div id="map-container" style={{ height: "500px", position: 'absolute', width: '100%' }}>
-          <div id="map" style={{ height: '100%', width: '100%' }} />
+    return (
+      <>
+        <div className='h-[500px]'>
+          <div id="map-container" style={{ height: "500px", position: 'absolute', width: '100%' }}>
+            <div id="map" style={{ height: '100%', width: '100%' }} />
+          </div>
         </div>
-      </div>
 
-      <form className='flex rounded gap-2 m-2 flex-col px-2 py-4 bg-green-200 shadow' action={this.handleAddmarker}>
-        <div className='flex gap-1 justify-between flex-shrink'>
-        <input type="text" placeholder='name' name="name" className='w-1/4 rounded shadow p-2'/>
-        <input type="text" placeholder="description" name="description" className='w-1/4 rounded shadow p-2'/>
-        <input type="text" readOnly value={this.state.lng} name="latitude" className='w-1/4 rounded shadow p-2'/>
-        <input type="text" readOnly value={this.state.lat} name="longitude" className='w-1/4 rounded shadow p-2'/>
+        <form className='flex rounded gap-2 m-2 flex-col px-2 py-4 bg-green-200 shadow' action={this.handleAddmarker}>
+          <div className='flex gap-1 justify-between flex-shrink flex-wrap'>
+            <label>Latitude:</label>
+            <input type="number" value={this.state.lat} onChange={e => this.setState({ lat: e.target.value })} name="latitude" className='w-full rounded shadow p-2' />
+            <label>Longitude:</label>
+            <input type="number" value={this.state.lng} onChange={e => this.setState({ lng: e.target.value })} name="longitude" className='w-full rounded shadow p-2'/>
+            <label>Name:</label>
+            <input type="text" placeholder='name' name="name" className='w-full rounded shadow p-2' />
+            <label>Description:</label>
+            <input type="text" placeholder="description" name="description" className='w-full rounded shadow p-2' />
+          </div>
+
+          <button type="submit" className='bg-green-300 hover:bg-green-400 p-2 text-center rounded w-full'>Submit</button>
+        </form>
+
+        <div className='grid grid-cols-1 gap-2 p-2 md:grid-cols-3'>
+          {this.renderMarkers()}
         </div>
-        <button type="submit" className='bg-green-300 hover:bg-green-400 p-2 text-center rounded w-full'>Submit</button>
-      </form>
 
-      <div className='grid grid-cols-1 gap-2 p-2 md:grid-cols-3'>
-      {this.renderMarkers()}
-      </div>
-
-    </>
-  );
-}
+      </>
+    );
+  }
 };
 
 export default RadarMap;

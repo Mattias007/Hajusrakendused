@@ -28,7 +28,7 @@ export default function Blogposts(props) {
     return (
         <div className='grid grid-cols-1 gap-2 p-2'>
             {props.data.map(e => (
-                <div key={e.id} className='rounded shadow bg-green-300 p-2'>
+                <div key={e.id} className='rounded shadow bg-green-200 p-2'>
                     <h1>{e.name}</h1>
                     <p>{e.description}</p>
 
@@ -44,9 +44,8 @@ export default function Blogposts(props) {
                         <>
                             <form action={handledeletePost}>
                                 <input name='id' readOnly hidden defaultValue={e.id}></input>
-                                <button type='submit'>Delete</button>
+                                <button type='submit' className="bg-red-600 p-2 rounded">Delete</button>
                             </form>
-
 
                             <form action={handleupdatedPost} className="flex flex-col gap-2">
                                 <input name='id' readOnly hidden defaultValue={e.id}></input>

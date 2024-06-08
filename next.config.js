@@ -15,7 +15,23 @@ const nextConfig = {
                 ]
             }
         ]
-    }
+    },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'mannicoon.com',
+            port: '',
+            pathname: '/storage/images/cats/**',
+          },
+          {
+            protocol: 'http',
+            hostname: 'res.cloudinary.com',
+            port: '',
+            pathname: '/dpqoomlhi/image/upload/**/**',
+          },
+        ],
+      },
 }
 
 module.exports = nextConfig
