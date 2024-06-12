@@ -6,6 +6,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from '@/components/CheckoutForm';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
 export default function PlaceOrderScreen() {
   const {
     cartItems,
@@ -30,6 +38,8 @@ export default function PlaceOrderScreen() {
 
 
   return (
+    <Elements stripe={stripePromise}>
+
     <div>
       {loading ? (
         <div>Loading</div>
@@ -103,7 +113,8 @@ export default function PlaceOrderScreen() {
                   </div>
                 </li>
                 <li>
-                  <form action={removeCartHandler} className='flex gap-2 flex-col'>
+                  <CheckoutForm props={totalPrice}></CheckoutForm>
+                  {/* <form action={removeCartHandler} className='flex gap-2 flex-col'>
                     <input required name="name" placeholder='First Name' className='rounded border p-2 border-green-200'></input>
                     <input required name="lastname" placeholder='Last Name' className='rounded border p-2 border-green-200'></input>
                     <input required name="email" placeholder='Email'className='rounded border p-2 border-green-200'></input>
@@ -111,7 +122,7 @@ export default function PlaceOrderScreen() {
                     <button className="primary-button w-full bg-green-200 p-2 rounded shadow hover:bg-green-400">
                       Place Order
                     </button>
-                  </form>
+                  </form> */}
                 </li>
               </ul>
             </div>
@@ -119,5 +130,6 @@ export default function PlaceOrderScreen() {
         </div>
       )}
     </div>
+  </Elements>
   )
 }
