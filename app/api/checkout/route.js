@@ -24,8 +24,8 @@ export async function POST(req) {
         },
       ],
       mode: 'payment',
-      success_url: "http://localhost:3000/store/success",
-      cancel_url: "http://localhost:3000/store/checkout",
+      success_url: "https://hajusrakendused.tak21maasik.itmajakas.ee/store/success",
+      cancel_url: "https://hajusrakendused.tak21maasik.itmajakas.ee/store/checkout",
     });
     
     return new Response(JSON.stringify({ id: session.id }), {
